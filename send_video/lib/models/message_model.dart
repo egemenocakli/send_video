@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 
+
 class MessageModel {
 
   final String message;
@@ -20,7 +21,7 @@ class MessageModel {
         this.sendTime = map['sendTime'];
   }
 
-  
+
 
 
 

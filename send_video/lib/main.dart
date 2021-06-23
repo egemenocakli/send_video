@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:send_video/views/home_view.dart';
 
-void main() => runApp(MyApp());
+void main() => runApp(HomeView());///homeview ile başlıyor.
 
 class MyApp extends StatelessWidget {
   @override
