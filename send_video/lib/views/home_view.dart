@@ -3,28 +3,25 @@ import 'package:flutter/material.dart';
 class HomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
-
-        appBar: AppBar(
-          title: Text("Görüşmeler",style: TextStyle(fontSize: 24),),
-          backgroundColor: Colors.lightBlueAccent,
-
-        ),
-        floatingActionButton: Container(
-          width: 80,
-          height: 80,
-          child: FloatingActionButton(
-            backgroundColor: Colors.lightBlueAccent,
-            focusColor: Colors.blue,
-            child: Icon(Icons.message,size: 40,),
-            onPressed: () {
-
-            },
+    return Scaffold(
+      appBar: PreferredSize(
+        preferredSize: Size(100,70),
+        child: AppBar(
+          title: Padding(
+            padding: const EdgeInsets.only(top: 20),
+            child: Text("Görüşmeler",style: TextStyle(fontSize: 27),),
           ),
-        ),///yeni mesaj için tıklama butonu
-        body: Container(
+        ),
+      ),
+      floatingActionButton: Container(
+        child: FloatingActionButton(
+          child: Icon(Icons.message),
+          backgroundColor: Colors.red,
+          onPressed: () {
+          },
+        ),
+      ),///yeni mesaj için tıklama butonu
+      body: Container(
 
           child: ListView(
             children: [
@@ -35,9 +32,8 @@ class HomeView extends StatelessWidget {
               ListTile(leading: Icon(Icons.person), title: (Text("Ad Soyad")),onTap: (){},),
             ],
           )
-        ),
-
       ),
+
     );
 
   }
