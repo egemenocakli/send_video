@@ -97,7 +97,7 @@ class CreateMessageFabWidget extends StatelessWidget {
       backgroundColor: Colors.red,
       onPressed: () {
 
-        Navigator.push(context, MaterialPageRoute(builder: (context) => ContactsView(_userModelList.length.toString())));
+        Navigator.push(context, MaterialPageRoute(builder: (context) => ContactsView()));
 
       },
     );

@@ -5,7 +5,7 @@ import 'package:send_video/views/chat_view.dart';
 import 'package:send_video/widgets/contact_widget.dart';
 
 class ContactsView extends StatefulWidget {
-  const ContactsView(ChatView chatView, {Key key, this.userList}) : super(key: key);
+  const ContactsView(  {Key key, this.userList}) : super(key: key);
 
   @override
   _ContactsViewState createState() => _ContactsViewState();
@@ -24,7 +24,7 @@ class _ContactsViewState extends State<ContactsView> {
       ),
 
       body: Container(
-        child: widget.userList != null && widget.userList.length > 0 ? ListView.builder(
+        child: widget.userList != null  ? ListView.builder(
           itemCount: widget.userList.length,
           itemBuilder: (context, index) {
 

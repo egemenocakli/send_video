@@ -20,7 +20,7 @@ class ChatView extends StatelessWidget {
             padding: const EdgeInsets.only(top: 20),
             child: Text(
               "Konuştuğumuz Kişi",
-              style: TextStyle(fontSize: 27),
+             // style: TextStyle(fontSize: 27),
             ),
           ),
         ),
