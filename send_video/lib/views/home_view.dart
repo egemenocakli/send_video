@@ -1,12 +1,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:send_video/models/message_model.dart';
+import 'package:send_video/models/user_model.dart';
 import 'package:send_video/services/auth/firebase_auth_service.dart';
 import 'package:send_video/services/db/firestore_service.dart';
 import 'package:send_video/viewmodels/home_viewmodel.dart';
 import 'package:send_video/views/chat_view.dart';
 import 'package:send_video/widgets/contact_widget.dart';
 
+import 'contacts_view.dart';
 import 'login_view.dart';
 
 class HomeView extends StatefulWidget {
@@ -21,9 +23,14 @@ class _HomeViewState extends State<HomeView> {
   HomeViewModel _homeViewModel = HomeViewModel();
 
   List<MessageModel> _messageList = [];
+  List<UserModel> _userModelList = [];
 
   @override
   Widget build(BuildContext context) {
+
+    _homeViewModel.getUsers().then((value) {
+      _userModelList = value;
+    });
 
      _homeViewModel.readMessages(FirebaseAuthService.userModel).then((value) {
 
@@ -43,7 +50,7 @@ class _HomeViewState extends State<HomeView> {
                 });
               },
               icon: Icon(Icons.exit_to_app),
-              iconSize: 40,
+             iconSize: 30,
               alignment: Alignment.bottomCenter,
             ),
           ],
@@ -51,18 +58,14 @@ class _HomeViewState extends State<HomeView> {
             padding: const EdgeInsets.only(top: 20),
             child: Text(
               "Görüşmeler",
-              style: TextStyle(fontSize: 27),
+              //style: TextStyle(fontSize: 27),
             ),
           ),
         ),
       ),
-      floatingActionButton: Container(
-        child: FloatingActionButton(
-          child: Icon(Icons.message),
-          backgroundColor: Colors.red,
-          onPressed: () {},
-        ),
-      ),
+
+
+      floatingActionButton: CreateMessageFabWidget(userModelList : _userModelList),
 
       ///yeni mesaj için tıklama butonu
       body: _messageList.length > 0 ? ListView.builder(
@@ -71,10 +74,32 @@ class _HomeViewState extends State<HomeView> {
 
         return ContactWidget(
           contactImage: "https://lh3.googleusercontent.com/ogw/ADea4I5wdvFHWqTQ5O9FUKcLN74uDpKXk4r1rjw_Zikh=s83-c-mo",
-          contactName: "Emre"
+          contactName: "Egemen"
           ,);
 
       },) : Text("Görüşme yok"),
+    );
+  }
+}
+
+class CreateMessageFabWidget extends StatelessWidget {
+  const CreateMessageFabWidget({
+    Key key,
+    @required List<UserModel> userModelList,
+  }) : _userModelList = userModelList, super(key: key);
+
+  final List<UserModel> _userModelList;
+
+  @override
+  Widget build(BuildContext context) {
+    return FloatingActionButton(
+      child: Icon(Icons.message),
+      backgroundColor: Colors.red,
+      onPressed: () {
+
+        Navigator.push(context, MaterialPageRoute(builder: (context) => ContactsView(_userModelList.length.toString())));
+
+      },
     );
   }
 }

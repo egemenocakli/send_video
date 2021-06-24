@@ -17,7 +17,7 @@ class LoginView extends StatelessWidget {
               _firebaseAuthService.signInWithGoogle().then((value){
 
                 debugPrint("oturum acildi: " + value.name);
-                Navigator.push(context, MaterialPageRoute(builder: (context) => HomeView()));
+                Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => HomeView()));
               });
             }, child: Text("Google ile giriş"))
           ],

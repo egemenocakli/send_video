@@ -12,6 +12,7 @@ abstract class DbBase{
   Future<MessageModel> deleteMessage();
 
   Future<bool> updateUserInfo(UserModel userModel);
+  Future<List<UserModel>> getUsers();
 
 
 

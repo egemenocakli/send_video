@@ -33,6 +33,13 @@ class HomeViewModel implements DbBase{
   Future<bool> updateUserInfo(UserModel userModel) {
   }
 
+  @override
+  Future<List<UserModel>> getUsers() async {
+
+    return await _firestoreService.getUsers();
+
+  }
+
 
 
 

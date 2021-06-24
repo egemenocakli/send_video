@@ -62,4 +62,26 @@ class FirestoreService implements DbBase
     });
 
   }
+
+  @override
+  Future<List<UserModel>> getUsers() async {
+
+    List<UserModel> userList = [];
+
+    await firestore.collection("users").get().then((value) async {
+
+/*      for(var element in value.docs)
+        {
+          firestore.collection("users").doc(element.reference.id).collection("user_info").doc(element.reference.id).get().then((value) {
+
+            debugPrint(value.data().toString());
+
+          });
+
+        }*/
+
+
+    });
+
+  }
 }
