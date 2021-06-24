@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "753921253287",
+    "project_id": "sendvideo-fdd50",
+    "storage_bucket": "sendvideo-fdd50.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:753921253287:android:32ad2d50983fcbaaae6082",
+        "android_client_info": {
+          "package_name": "com.example.send_video"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "753921253287-805d5kfd3m4s0trkiarjk6qn904nrmeu.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.send_video",
+            "certificate_hash": "bed481505ae0c8cd499548a8d0b3edbf55d758f0"
+          }
+        },
+        {
+          "client_id": "753921253287-0pe67ai2kj9usfln8p7khh23161860je.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDDWpvNgifP6iUbAbL3H5rpoxUQSm8aHyM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "753921253287-0pe67ai2kj9usfln8p7khh23161860je.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
