@@ -1,8 +1,16 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:send_video/views/home_view.dart';
-import 'package:send_video/views/chat_view.dart';
+import 'package:send_video/views/login_view.dart';
 
-void main() => runApp(MyApp());///homeview ile başlıyor.
+import 'locator.dart';
+
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  setupLocator();
+  await Firebase.initializeApp();
+
+  runApp(MyApp());
+} ///homeview ile başlıyor.
 
 class MyApp extends StatelessWidget {
   @override
@@ -13,7 +21,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primaryColor: Colors.red,
       ),
-      home: ChatView(),
+      home: LoginView(), //ChatView(),
     );
   }
 }

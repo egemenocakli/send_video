@@ -6,8 +6,9 @@ class UserModel{
   final String name;
   final bool doctor;
   final bool patient;
+  final String userPhoto;
 
-  UserModel({@required this.userId, this.name, this.doctor, this.patient});
+  UserModel({@required this.userId, this.name, this.doctor, this.patient, this.userPhoto});
 
   Map<String, dynamic> toMap() {
     return {
@@ -15,6 +16,7 @@ class UserModel{
       'name': name,
       'doctor': doctor,
       'patient' : patient,
+      'userPhoto' : userPhoto,
     };
   }
 
@@ -22,7 +24,9 @@ class UserModel{
       : this.userId = map['userId'],
         this.name = map['name'],
         this.doctor = map['doctor'],
-        this.patient = map['patient'];
+        this.patient = map['patient'],
+        this.userPhoto = map['userPhoto'];
+
 }
 
 
