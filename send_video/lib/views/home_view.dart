@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:send_video/models/conversation.dart';
 import 'package:send_video/models/message_model.dart';
 import 'package:send_video/models/user_model.dart';
 import 'package:send_video/services/auth/firebase_auth_service.dart';
@@ -97,7 +98,7 @@ class CreateMessageFabWidget extends StatelessWidget {
       backgroundColor: Colors.red,
       onPressed: () {
 
-        Navigator.push(context, MaterialPageRoute(builder: (context) => ContactsView()));
+        Navigator.push(context, MaterialPageRoute(builder: (context) => Conversation()));
 
       },
     );
