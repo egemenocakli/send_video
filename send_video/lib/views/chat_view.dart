@@ -57,6 +57,8 @@ class _ChatViewState extends State<ChatView> {
             flex: 9,
             child: messages != null ? ListView.builder(
               itemCount: messages.length,
+              
+
               itemBuilder: (context, index) {
 
               return MessageWidget(
@@ -70,7 +72,7 @@ class _ChatViewState extends State<ChatView> {
           ),
           Expanded(
             flex: 1,
-            child: MessageInputWidget(),
+            child: MessageInputWidget(fromUser: currentUser ,toUser: widget.contactUser,),
           ),
         ],
       ),
@@ -86,6 +88,11 @@ class _ChatViewState extends State<ChatView> {
 
       messages.clear();
       messages.addAll(value);
+
+      messages.sort((a, b) => a.sendtime.compareTo(b.sendtime) );
+
+
+      //fruits.sort((a, b) => getPrice(a).compareTo(getPrice(b)));
 
     });
 

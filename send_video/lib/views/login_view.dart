@@ -13,11 +13,19 @@ class LoginView extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            ElevatedButton(onPressed: () {
+            ElevatedButton(
+
+                style: ElevatedButton.styleFrom(
+                  primary: Colors.red, // background
+                  onPrimary: Colors.white, // foreground
+                ),
+
+                onPressed: () {
               _firebaseAuthService.signInWithGoogle().then((value){
 
                 debugPrint("oturum acildi: " + value.name);
                 Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => HomeView()));
+
               });
             }, child: Text("Google ile giriş"))
           ],

@@ -22,18 +22,16 @@ class _HomeViewState extends State<HomeView> {
   FirebaseAuthService _firebaseAuthService = FirebaseAuthService();
   HomeViewModel _homeViewModel = HomeViewModel();
 
-  List<MessageModel> _messageList = [];
-  List<UserModel> _userModelList = [];
+  List<UserModel> _lastUsers = [];
 
   @override
   Widget build(BuildContext context) {
 
-    //todo:
-/*     _homeViewModel.readMessages(FirebaseAuthService.userModel).then((value) {
+    _homeViewModel.getLastUsers().then((value) {
+      _lastUsers = value;
 
-      _messageList = value;
       setState(() {});
-    });*/
+    });
 
     return Scaffold(
       appBar: PreferredSize(
@@ -64,12 +62,11 @@ class _HomeViewState extends State<HomeView> {
 
       floatingActionButton: CreateMessageFabWidget(),
 
-      ///yeni mesaj için tıklama butonu
-      body: _messageList.length > 0 ? ListView.builder(
-        itemCount: _messageList.length,
+      body: _lastUsers.length > 0 ? ListView.builder(
+        itemCount: _lastUsers.length,
         itemBuilder: (context, index) {
 
-        return null; // ContactWidget(); //todo: konuşulacak user gelecek
+       return ContactWidget(contactUser: _lastUsers[index],); //todo: konuşulacak user gelecek
 
       },) : Text("Görüşme yok"),
     );
