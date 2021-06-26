@@ -7,7 +7,7 @@ abstract class DbBase{
   ///
 
   Future<MessageModel> readMessage(UserModel userModel, String messageId);
-  Future<List<MessageModel>> readMessages(UserModel userModel);
+  Future<List<MessageModel>> readMessages(UserModel userModel, UserModel contactUser);
   Future<MessageModel> sendMessage();
   Future<MessageModel> deleteMessage();
 

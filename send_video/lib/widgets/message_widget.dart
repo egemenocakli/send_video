@@ -23,7 +23,7 @@ class MessageWidget extends StatelessWidget {
 
           ownMessage == true ? Padding(
             padding: const EdgeInsets.only(top: 15),
-            child: Text(sendTime != null ? " ${sendTime.toDate().hour}:${sendTime.toDate().second} "  : '',style: TextStyle(fontSize: 13),),
+            child: Text(sendTime != null ? "  ${sendTime.toDate().hour}:${sendTime.toDate().minute}  "  : '',style: TextStyle(fontSize: 13),),
           ): Container(),
           Container(
             padding: EdgeInsets.all(10),
@@ -38,7 +38,7 @@ class MessageWidget extends StatelessWidget {
           ),
          ownMessage == false ? Padding(
             padding: const EdgeInsets.only(top: 15),
-            child: Text(sendTime != null ? " ${sendTime.toDate().hour}:${sendTime.toDate().second} "  : '',style: TextStyle(fontSize: 13),),
+            child: Text(sendTime != null ? "  ${sendTime.toDate().hour}:${sendTime.toDate().minute}  "  : '',style: TextStyle(fontSize: 13),),
           ) : Container(),
 
         ],

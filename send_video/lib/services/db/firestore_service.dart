@@ -36,11 +36,11 @@ class FirestoreService implements DbBase
   }
 
   @override
-  Future<List<MessageModel>> readMessages(UserModel userModel) async {
+  Future<List<MessageModel>> readMessages(UserModel userModel, UserModel contactUser) async {
 
     List<MessageModel> messages = [];
 
-    await firestore.collection("users").doc(userModel.userId).collection("messages").get().then((value) {
+    await firestore.collection("users").doc(userModel.userId).collection("messages").doc(contactUser.userId).collection("messages").get().then((value) {
 
       for(var element in value.docs)
         {
@@ -70,18 +70,14 @@ class FirestoreService implements DbBase
 
     await firestore.collection("users").get().then((value) async {
 
-/*      for(var element in value.docs)
-        {
-          firestore.collection("users").doc(element.reference.id).collection("user_info").doc(element.reference.id).get().then((value) {
-
-            debugPrint(value.data().toString());
-
-          });
-
-        }*/
-
-
+      for(var element in value.docs) {
+        await firestore.collection("users").doc(element.id).collection("user_info").doc(element.id).get().then((value) {
+          userList.add( UserModel.fromMap(value.data()));
+        });
+      }
     });
+
+    return userList;
 
   }
 }

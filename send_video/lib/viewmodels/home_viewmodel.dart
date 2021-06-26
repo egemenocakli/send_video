@@ -18,9 +18,9 @@ class HomeViewModel implements DbBase{
   }
 
   @override
-  Future<List<MessageModel>> readMessages(UserModel userModel) async {
+  Future<List<MessageModel>> readMessages(UserModel userModel, UserModel contactUser) async {
 
-    return await _firestoreService.readMessages(FirebaseAuthService.userModel);
+  //todo  return await _firestoreService.readMessages(FirebaseAuthService.userModel);
 
   }
 
