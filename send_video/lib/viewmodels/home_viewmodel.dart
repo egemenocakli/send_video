@@ -18,16 +18,13 @@ class HomeViewModel implements DbBase{
   }
 
   @override
-  Future<List<MessageModel>> readMessages(UserModel userModel) async {
+  Future<List<MessageModel>> readMessages(UserModel userModel, UserModel contactUser) async {
 
-    return await _firestoreService.readMessages(FirebaseAuthService.userModel);
+  //todo  return await _firestoreService.readMessages(FirebaseAuthService.userModel);
 
   }
 
-  @override
-  Future<MessageModel> sendMessage() {
-  }
-
+ 
 
   @override
   Future<bool> updateUserInfo(UserModel userModel) {
@@ -39,6 +36,23 @@ class HomeViewModel implements DbBase{
     return await _firestoreService.getUsers();
 
   }
+
+  @override
+  Future<List<UserModel>> getLastUsers() async {
+    return await _firestoreService.getLastUsers();
+  }
+
+  @override
+  Future<UserModel> getUserFromId(String userId) async {
+    return await _firestoreService.getUserFromId(userId);
+  }
+
+  @override
+  Future<bool> sendMessage({UserModel fromUser, UserModel toUser, String messageText}) {
+    // TODO: implement sendMessage
+    throw UnimplementedError();
+  }
+
 
 
 

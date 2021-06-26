@@ -22,19 +22,14 @@ class _HomeViewState extends State<HomeView> {
   FirebaseAuthService _firebaseAuthService = FirebaseAuthService();
   HomeViewModel _homeViewModel = HomeViewModel();
 
-  List<MessageModel> _messageList = [];
-  List<UserModel> _userModelList = [];
+  List<UserModel> _lastUsers = [];
 
   @override
   Widget build(BuildContext context) {
 
-    _homeViewModel.getUsers().then((value) {
-      _userModelList = value;
-    });
+    _homeViewModel.getLastUsers().then((value) {
+      _lastUsers = value;
 
-     _homeViewModel.readMessages(FirebaseAuthService.userModel).then((value) {
-
-      _messageList = value;
       setState(() {});
     });
 
@@ -65,17 +60,13 @@ class _HomeViewState extends State<HomeView> {
       ),
 
 
-      floatingActionButton: CreateMessageFabWidget(userModelList : _userModelList),
+      floatingActionButton: CreateMessageFabWidget(),
 
-      ///yeni mesaj için tıklama butonu
-      body: _messageList.length > 0 ? ListView.builder(
-        itemCount: _messageList.length,
+      body: _lastUsers.length > 0 ? ListView.builder(
+        itemCount: _lastUsers.length,
         itemBuilder: (context, index) {
 
-        return ContactWidget(
-          contactImage: "https://lh3.googleusercontent.com/ogw/ADea4I5wdvFHWqTQ5O9FUKcLN74uDpKXk4r1rjw_Zikh=s83-c-mo",
-          contactName: "Egemen"
-          ,);
+       return ContactWidget(contactUser: _lastUsers[index],); //todo: konuşulacak user gelecek
 
       },) : Text("Görüşme yok"),
     );
@@ -83,12 +74,6 @@ class _HomeViewState extends State<HomeView> {
 }
 
 class CreateMessageFabWidget extends StatelessWidget {
-  const CreateMessageFabWidget({
-    Key key,
-    @required List<UserModel> userModelList,
-  }) : _userModelList = userModelList, super(key: key);
-
-  final List<UserModel> _userModelList;
 
   @override
   Widget build(BuildContext context) {
@@ -96,9 +81,7 @@ class CreateMessageFabWidget extends StatelessWidget {
       child: Icon(Icons.message),
       backgroundColor: Colors.red,
       onPressed: () {
-
         Navigator.push(context, MaterialPageRoute(builder: (context) => ContactsView()));
-
       },
     );
   }

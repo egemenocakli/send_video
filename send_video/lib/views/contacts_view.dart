@@ -1,22 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:send_video/models/message_model.dart';
 import 'package:send_video/models/user_model.dart';
+import 'package:send_video/services/db/firestore_service.dart';
 import 'package:send_video/views/chat_view.dart';
 import 'package:send_video/widgets/contact_widget.dart';
 
 class ContactsView extends StatefulWidget {
-  const ContactsView(  {Key key, this.userList}) : super(key: key);
 
   @override
   _ContactsViewState createState() => _ContactsViewState();
 
-  final List<UserModel> userList;
 }
 
 class _ContactsViewState extends State<ContactsView> {
 
+  List<UserModel> userList = [];
+  FirestoreService _firestoreService = FirestoreService();
+
   @override
   Widget build(BuildContext context) {
+
+    getUsers();
+
     return Scaffold(
 
       appBar: AppBar(
@@ -24,18 +29,28 @@ class _ContactsViewState extends State<ContactsView> {
       ),
 
       body: Container(
-        child: widget.userList != null  ? ListView.builder(
-          itemCount: widget.userList.length,
+        child: userList.length > 0 ? ListView.builder(
+          itemCount: userList.length,
           itemBuilder: (context, index) {
 
-            return ContactWidget(
-              contactImage: "https://lh3.googleusercontent.com/ogw/ADea4I5wdvFHWqTQ5O9FUKcLN74uDpKXk4r1rjw_Zikh=s83-c-mo",
-              contactName: "ali"
-              ,);
+            return ContactWidget(contactUser: userList[index]);
 
           },) : Text("Kimse yok"),
       ),
 
     );
+  }
+
+  Future<void> getUsers()
+  async {
+    await _firestoreService.getUsers().then((value) {
+
+      userList.clear();
+      userList.addAll(value);
+
+      setState(() {});
+
+    });
+
   }
 }

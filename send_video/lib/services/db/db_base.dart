@@ -3,16 +3,18 @@ import 'package:send_video/models/user_model.dart';
 
 
 abstract class DbBase{
-  /// İçeriği olmayan metotlar tanımlanır, Kullanmak için bir sınıfa uygulanması gerekli. Uygulandığı yerde bu metotların içeriğii doldurulması gerekli.
-  ///
+
+
 
   Future<MessageModel> readMessage(UserModel userModel, String messageId);
-  Future<List<MessageModel>> readMessages(UserModel userModel);
-  Future<MessageModel> sendMessage();
+  Future<List<MessageModel>> readMessages(UserModel userModel, UserModel contactUser);
+  Future<bool> sendMessage({UserModel fromUser, UserModel toUser, String messageText});
   Future<MessageModel> deleteMessage();
 
   Future<bool> updateUserInfo(UserModel userModel);
   Future<List<UserModel>> getUsers();
+  Future<List<UserModel>> getLastUsers();
+  Future<UserModel> getUserFromId(String userId);
 
 
 

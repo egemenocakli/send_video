@@ -13,7 +13,7 @@ class UserModel{
     this.name,
     this.doctor,
     this.patient,
-    this.userPhoto : "https://lh3.googleusercontent.com/ogw/ADea4I5wdvFHWqTQ5O9FUKcLN74uDpKXk4r1rjw_Zikh=s83-c-mo"
+    this.userPhoto : "https://cdn1.iconfinder.com/data/icons/mix-color-4/502/Untitled-1-512.png"
   });
 
   Map<String, dynamic> toMap() {
